@@ -9,7 +9,7 @@ function decons(::Type{Pattern.Ref}, ctx::PatternContext, pat::Pattern.Type)
     #    value.
     # 2 is not supported for now because I don't see any use case.
     coll = CollectionDecons(ctx, pat, pat.args) do _
-        :($Base.Vector{<:$(pat.head)})
+        :($Base.Vector{$(pat.head)})
     end
     set_view_type_check!(coll) do view, eltype
         # For the pattern
